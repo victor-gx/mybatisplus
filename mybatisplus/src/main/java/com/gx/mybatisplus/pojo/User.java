@@ -1,7 +1,10 @@
 package com.gx.mybatisplus.pojo;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableLogic;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.gx.mybatisplus.enums.SexEnum;
 import lombok.*;
 
 // @NoArgsConstructor
@@ -11,7 +14,7 @@ import lombok.*;
 // @EqualsAndHashCode
 @Data
 // 设置实体类所对应的表名
-// @TableName("t_user")
+@TableName("t_user")
 public class User {
 
 	//将属性所对应的字段指定为主键
@@ -21,19 +24,26 @@ public class User {
 	@TableId("uid")
 	private Long id;
 
+	//指定属性所对应的字段名
+	@TableField("user_name")
 	private String name;
 
 	private Integer age;
 
 	private String email;
 
-	@Override
-	public String toString() {
-		return "User{" +
-				"id=" + id +
-				", name='" + name + '\'' +
-				", age=" + age +
-				", email='" + email + '\'' +
-				'}';
-	}
+	private SexEnum sex;
+
+	@TableLogic
+	private Integer isDeleted;
+
+	// @Override
+	// public String toString() {
+	// 	return "User{" +
+	// 			"id=" + id +
+	// 			", name='" + name + '\'' +
+	// 			", age=" + age +
+	// 			", email='" + email + '\'' +
+	// 			'}';
+	// }
 }
